@@ -671,7 +671,7 @@ open class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePollable, So
 
     // Test Properties
 
-    func setConnected(_ value: Bool) {
+    func SetConnected(_ value: Bool) {
         connected = value
     }
 }

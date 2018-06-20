@@ -12,6 +12,8 @@ class ChatVc: UIViewController {
     //outLet
     @IBOutlet weak var menubtn: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //for slide menue
@@ -22,8 +24,9 @@ class ChatVc: UIViewController {
         
         //for slide to cancel the rear view
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        
+      
+        
     }
-
-
-
-}
+   
+    }
