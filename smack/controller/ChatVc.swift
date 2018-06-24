@@ -11,6 +11,7 @@ import UIKit
 class ChatVc: UIViewController {
     //outLet
     @IBOutlet weak var menubtn: UIButton!
+    @IBAction func prepareForUnwind(segue : UIStoryboardSegue){}
     
     
     
