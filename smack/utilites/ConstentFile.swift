@@ -9,11 +9,12 @@
 import Foundation
 
 //clousers.
-typealias completionHandler = (_ Sucsess : Bool) -> ()
+typealias completionHandler = (_ Success : Bool) -> ()
 
 //URLs
 let baseURL = "https://chattychatchat29.herokuapp.com/v1/"
 let urlRegistration = "\(baseURL)account/register"
+let URL_LOGIN = "\(baseURL)account/login"
 
 
 //segues
@@ -25,3 +26,7 @@ let UNWIND = "unwindToChannel"
 let LOGGED_IN_KEY = "loggedIn"
 let TOKEN_KEY = "token"
 let USER_EMAIL = "userEmail"
+
+// Headers
+let HEADER = [
+    "Content-Type": "application/json; charset=utf-8"]
