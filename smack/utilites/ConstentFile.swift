@@ -15,6 +15,7 @@ typealias completionHandler = (_ Success : Bool) -> ()
 let baseURL = "https://chattychatchat29.herokuapp.com/v1/"
 let urlRegistration = "\(baseURL)account/register"
 let URL_LOGIN = "\(baseURL)account/login"
+let URL_USER_ADD = "\(baseURL)user/add"
 
 
 //segues
