@@ -32,3 +32,9 @@ let USER_EMAIL = "userEmail"
 // Headers
 let HEADER = [
     "Content-Type": "application/json; charset=utf-8"]
+
+//notifications Name
+let NOTIF_USER_DID_CHANGE = Notification.Name("notificationUserDataChange")
+
+
+

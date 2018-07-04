@@ -39,7 +39,7 @@ class AvatarPickerVC: UIViewController , UICollectionViewDataSource , UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "avatarCell", for: indexPath) as? AvatarCell {
-            cell.cinfigCell(type: avatarType, index: indexPath.item)
+            cell.configCell(type: avatarType, index: indexPath.item)
             return cell
         }
         return AvatarCell()
@@ -57,7 +57,7 @@ class AvatarPickerVC: UIViewController , UICollectionViewDataSource , UICollecti
         if avatarType == .dark {
             UserDataService.instance.setAvatarName(avatarName: "dark\(indexPath.item)")
         }else {
-            UserDataService.instance.setAvatarName(avatarName: "ligt\(indexPath.item)")
+            UserDataService.instance.setAvatarName(avatarName: "light\(indexPath.item)")
         }
         self.dismiss(animated: true, completion: nil)
     }

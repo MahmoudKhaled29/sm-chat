@@ -22,7 +22,7 @@ class AvatarCell: UICollectionViewCell {
         updateView()
     }
     
-    func cinfigCell(type: AvatarType , index : Int)  {
+    func configCell(type: AvatarType , index : Int)  {
         if type == AvatarType.dark{
             avatarImg.image = UIImage(named: "dark\(index)")
             layer.backgroundColor = UIColor.lightGray.cgColor
