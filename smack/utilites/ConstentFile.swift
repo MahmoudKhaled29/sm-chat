@@ -42,6 +42,8 @@ let BREAR_HEADER = [
 
 //notifications Name
 let NOTIF_USER_DID_CHANGE = Notification.Name("notificationUserDataChange")
+let NOTIF_CHANNELES_LOADES = Notification.Name("ChannelsLoaded")
+let NOTIF_CHANNEL_SELECTED = Notification.Name("channelSelected")
 
 
 

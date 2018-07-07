@@ -88,7 +88,7 @@ class AuthService{
                 
             }else{
                 completion(false)
-                debugPrint("look",response.result.error as Any)
+                debugPrint("look1",response.result.error as Any)
             }
         }
     }
@@ -112,7 +112,7 @@ class AuthService{
                 completion(true)
             }else{
                 completion(false)
-                debugPrint("look",response.result.error as Any)
+                debugPrint("look2",response.result.error as Any)
             }
         }
     }
@@ -126,7 +126,7 @@ class AuthService{
                 completion(true)
             }else{
                 completion(false)
-                debugPrint("look2",response.result.error as Any)
+                debugPrint("look3",response.result.error as Any)
             }
         }
         

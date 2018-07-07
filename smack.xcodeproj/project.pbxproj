@@ -146,8 +146,8 @@
 		57022F9820D0B8BB001010ED /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				57022F9D20D0B916001010ED /* ChannelVC.swift */,
 				57022F9F20D0B92C001010ED /* ChatVc.swift */,
+				57022F9D20D0B916001010ED /* ChannelVC.swift */,
 				57659CC320DAEC7D00F9B692 /* loginVC.swift */,
 				57362A6820DC8E000062ED7F /* CreatAcountVC.swift */,
 				577FA8FC20EAAA9C001C399C /* AvatarPickerVC.swift */,

@@ -20,4 +20,56 @@ class SocketService: NSObject {
     
     //variable of socket
     
+     let manager = SocketManager(socketURL: URL(string: baseURL)!,config: [.log(true), .compress])
+    // let socket : SocketIOClient = SocketIOClient(socketURL : URL(string : baseURL)!)
+    //let manager = SocketManager(socketURL: URL(string: "\(baseURL)")!)
+    lazy var socket: SocketIOClient = manager.defaultSocket
+   
+    
+    //two funcs used in app delegate
+    func establishConnection (){
+        socket.connect()
+    }
+    
+    func dissConnection(){
+        socket.disconnect()
+    }
+    
+    
+    func addChannel(channelName : String , ChannelDescription: String , completion : @escaping completionHandler){
+        //emit when the socket is open in server or to say info for socket
+        socket.emit("newChannel", channelName, ChannelDescription)
+        completion(true)
+    }
+
+    
+    //this func make a change so we used it in channelVC which that the place would be changed after channel is created
+    //which the channelVC contain the tabel view which is would be reload data
+    
+    func getChannel(completion: @escaping completionHandler){
+        
+        //when the socket on api emit for client after create channel , api emit for me data so we receive it as socket om
+       
+        socket.on("channelCreated") { (dataArray, ack) in
+            
+            //get data as array of any typr
+            guard let channelName = dataArray[0] as? String else {return}
+            guard let channelDesc = dataArray[1] as? String else {return}
+            guard let channelId = dataArray[2] as? String else {return}
+            
+            //create new channel model
+            let newChannel = Channel(_id: channelId, name: channelName, description: channelDesc)
+            
+            //add chanel to array of channel
+            MessageService.instance.channels.append(newChannel)
+            completion(true)
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
 }

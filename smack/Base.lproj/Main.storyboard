@@ -182,7 +182,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="RDI-MD-0Y7">
                                 <rect key="frame" x="65" y="185" width="245" height="106"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tc2-co-maK" customClass="TextFiledView" customModule="smack" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tc2-co-maK" customClass="TextFiledView" customModule="smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="245" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="245" id="5Iv-TC-3NO"/>
@@ -611,6 +611,7 @@
                         <viewLayoutGuide key="safeArea" id="Gor-Vs-iAL"/>
                     </view>
                     <connections>
+                        <outlet property="channelNamelbl" destination="9iv-d6-srL" id="fZi-FD-gNd"/>
                         <outlet property="menubtn" destination="Lei-Lc-8KP" id="met-Em-ZEc"/>
                         <outlet property="spinner" destination="afh-Fs-PoI" id="90P-Nd-jgo"/>
                     </connections>

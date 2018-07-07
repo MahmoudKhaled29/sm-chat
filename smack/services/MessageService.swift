@@ -13,6 +13,7 @@ import SwiftyJSON
 class MessageService {
     static let instance = MessageService()
     var channels = [Channel]()
+    var selectedChannel : Channel?
     
     func findAllChannels(completion : @escaping completionHandler){
         
@@ -44,10 +45,9 @@ class MessageService {
                 }catch{
                     print("Error with parsing")
                 }
-                let chanel = Channel(_id: "52", name: "Mahmoud", description: "tmam")
-                self.channels.append(chanel)
-                print(self.channels)
-                
+              //  let chanel = Channel(_id: "52", name: "Mahmoud", description: "tmam")
+              //  self.channels.append(chanel)
+                NotificationCenter.default.post(name: NOTIF_CHANNELES_LOADES, object: nil)
                 completion(true)
             }else{
                 completion(false)
@@ -55,6 +55,9 @@ class MessageService {
             }
             
         }
+    }
+    func clearChannel(){
+        channels.removeAll()
     }
     
 }
