@@ -16,6 +16,8 @@ let baseURL = "https://chattychatchat29.herokuapp.com/v1/"
 let urlRegistration = "\(baseURL)account/register"
 let URL_LOGIN = "\(baseURL)account/login"
 let URL_USER_ADD = "\(baseURL)user/add"
+let URL_FIND_BY_EMAIL = "\(baseURL)/user/byEmail/"
+let URL_GET_CHANNEL = "\(baseURL)channel/"
 
 
 //segues
@@ -32,6 +34,11 @@ let USER_EMAIL = "userEmail"
 // Headers
 let HEADER = [
     "Content-Type": "application/json; charset=utf-8"]
+
+let BREAR_HEADER = [
+    "Authorization":"Bearer \(AuthService.instance.authToken)",
+    "Content-Type": "application/json; charset=utf-8"
+]
 
 //notifications Name
 let NOTIF_USER_DID_CHANGE = Notification.Name("notificationUserDataChange")

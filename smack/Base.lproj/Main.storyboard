@@ -59,6 +59,9 @@
                                     <constraint firstAttribute="height" constant="22" id="t5q-ua-LZQ"/>
                                 </constraints>
                                 <state key="normal" image="addChannelButton"/>
+                                <connections>
+                                    <action selector="addChannelPressed:" destination="ZTE-p1-6Ay" eventType="touchUpInside" id="wBA-so-61O"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-VU-i8h" customClass="CircleImage" customModule="smack" customModuleProvider="target">
                                 <rect key="frame" x="16" y="572" width="75" height="75"/>
@@ -71,7 +74,7 @@
                                 <rect key="frame" x="0.0" y="134" width="375" height="418"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="U67-qd-WnE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCell" id="U67-qd-WnE" customClass="ChanellCell" customModule="smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U67-qd-WnE" id="OyF-A6-4Me">
@@ -91,6 +94,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="channelNamelbl" destination="YFY-3k-hCd" id="sEA-NL-Kf3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -138,6 +144,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="QGR-t2-Stc" id="71j-g2-CGF"/>
+                        <outlet property="tableView" destination="u2N-mH-5YB" id="8pi-0s-nqz"/>
                         <outlet property="userImg" destination="0ox-VU-i8h" id="eY7-Je-D1U"/>
                         <segue destination="nun-2E-ErL" kind="show" identifier="toLogin" id="NRl-8r-kk7"/>
                     </connections>
@@ -229,6 +236,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginPressed:" destination="nun-2E-ErL" eventType="touchUpInside" id="KZp-72-87y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47v-oH-Qz3">
                                 <rect key="frame" x="81" y="349" width="213" height="30"/>
@@ -251,12 +261,18 @@
                                     <action selector="closedbtnPressed:" destination="nun-2E-ErL" eventType="touchUpInside" id="HZY-PN-hCZ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GTK-lT-znf">
+                                <rect key="frame" x="169" y="250" width="37" height="37"/>
+                                <color key="color" red="0.08235294118" green="0.39607843139999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mpY-17-bHZ" firstAttribute="trailing" secondItem="xOf-7m-UFp" secondAttribute="trailing" constant="20" id="35M-rW-fCo"/>
                             <constraint firstItem="ahX-bW-qZD" firstAttribute="centerX" secondItem="YPV-SR-tr9" secondAttribute="centerX" id="3SL-AI-zi7"/>
+                            <constraint firstItem="GTK-lT-znf" firstAttribute="centerX" secondItem="YPV-SR-tr9" secondAttribute="centerX" id="F3Z-hM-eJl"/>
                             <constraint firstItem="47v-oH-Qz3" firstAttribute="centerX" secondItem="YPV-SR-tr9" secondAttribute="centerX" id="VRw-aP-FLe"/>
+                            <constraint firstItem="GTK-lT-znf" firstAttribute="centerY" secondItem="YPV-SR-tr9" secondAttribute="centerY" constant="-65" id="aNW-nb-xhM"/>
                             <constraint firstItem="8U3-iL-33m" firstAttribute="centerX" secondItem="YPV-SR-tr9" secondAttribute="centerX" id="awq-wt-afg"/>
                             <constraint firstItem="8U3-iL-33m" firstAttribute="top" secondItem="RDI-MD-0Y7" secondAttribute="bottom" constant="20" id="hrH-lg-Nue"/>
                             <constraint firstItem="47v-oH-Qz3" firstAttribute="top" secondItem="8U3-iL-33m" secondAttribute="bottom" id="lPb-HR-zei"/>
@@ -268,6 +284,9 @@
                         <viewLayoutGuide key="safeArea" id="mpY-17-bHZ"/>
                     </view>
                     <connections>
+                        <outlet property="passTxt" destination="vql-rz-rIu" id="tVs-rP-8Sr"/>
+                        <outlet property="spiner" destination="GTK-lT-znf" id="fKf-Ic-ZcG"/>
+                        <outlet property="userEmail" destination="tc2-co-maK" id="KHW-0O-txL"/>
                         <segue destination="lZc-xN-XSY" kind="show" identifier="toCreatAcount" id="agv-LK-8QN"/>
                     </connections>
                 </viewController>
@@ -576,10 +595,16 @@
                                     <constraint firstAttribute="height" constant="77" id="tGG-SP-Z9v"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="afh-Fs-PoI">
+                                <rect key="frame" x="169" y="275" width="37" height="37"/>
+                                <color key="color" red="0.08235294118" green="0.39607843139999999" blue="0.75294117650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="afh-Fs-PoI" firstAttribute="centerY" secondItem="wuu-bA-Xbj" secondAttribute="centerY" constant="-40" id="FRn-bF-3LK"/>
                             <constraint firstItem="kGI-tX-9np" firstAttribute="top" secondItem="wuu-bA-Xbj" secondAttribute="top" id="OvV-Re-yE7"/>
+                            <constraint firstItem="afh-Fs-PoI" firstAttribute="centerX" secondItem="wuu-bA-Xbj" secondAttribute="centerX" id="bpw-b6-zX0"/>
                             <constraint firstItem="kGI-tX-9np" firstAttribute="trailing" secondItem="Gor-Vs-iAL" secondAttribute="trailing" id="mnK-1e-eXy"/>
                             <constraint firstItem="kGI-tX-9np" firstAttribute="leading" secondItem="Gor-Vs-iAL" secondAttribute="leading" id="nMm-eb-nUw"/>
                         </constraints>
@@ -587,6 +612,7 @@
                     </view>
                     <connections>
                         <outlet property="menubtn" destination="Lei-Lc-8KP" id="met-Em-ZEc"/>
+                        <outlet property="spinner" destination="afh-Fs-PoI" id="90P-Nd-jgo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2BC-i9-Lxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
