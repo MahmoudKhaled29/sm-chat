@@ -18,6 +18,7 @@ let URL_LOGIN = "\(baseURL)account/login"
 let URL_USER_ADD = "\(baseURL)user/add"
 let URL_FIND_BY_EMAIL = "\(baseURL)/user/byEmail/"
 let URL_GET_CHANNEL = "\(baseURL)channel/"
+let URL_GET_MESSAGES = "\(baseURL)message/byChannel/"
 
 
 //segues

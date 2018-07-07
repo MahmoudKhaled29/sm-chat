@@ -61,10 +61,9 @@ class ChatVc: UIViewController {
     }
     @objc func userDataDidChange(_ notifi: Notification){
         if AuthService.instance.isLoggin {
-            //get message
-            
+            //get message and channels
             onLogInGetMessage()
-            channelNamelbl.text = "chat"
+            //channelNamelbl.text = "chat"
         }else{
             channelNamelbl.text = "Please Log IN"
         }
@@ -74,21 +73,41 @@ class ChatVc: UIViewController {
         updateWithChannel()
     }
     
+    func updateWithChannel(){
+        let channelName = MessageService.instance.selectedChannel?.name ?? ""
+        channelNamelbl.text = "#\(channelName)"
+        //get messages which it contained in the selected specific channel
+        getMessages()
+    }
     
     func onLogInGetMessage(){
         MessageService.instance.findAllChannels { (success) in
             if success{
-                //do stuff with channel
+                //check if there is a channell
+                if MessageService.instance.channels.count > 0 {
+                    //make the selected channel is the first channel by default
+                    MessageService.instance.selectedChannel = MessageService.instance.channels[0]
+                    //after make the one is dafult updatewith channel we update the view with selected channel
+                    self.updateWithChannel()
+                }else{
+                    self.channelNamelbl.text = "NO Channels yet"
+                }
             }
         }
     }
     
-    func updateWithChannel(){
-        let channelName = MessageService.instance.selectedChannel?.name ?? ""
-        channelNamelbl.text = "#\(channelName)"
+   
+    
+    //function to get messages on specific channel
+    func getMessages(){
+        guard let channelId = MessageService.instance.selectedChannel?._id else {return}
+        MessageService.instance.findAllMessagesForChannel(channelId: channelId) { (success) in
+            if success {
+                print("Finally you'r welcom")
+            }
+        }
+
     }
-    
-    
     
     
 }
