@@ -20,7 +20,6 @@ let URL_FIND_BY_EMAIL = "\(baseURL)/user/byEmail/"
 let URL_GET_CHANNEL = "\(baseURL)channel/"
 let URL_GET_MESSAGES = "\(baseURL)message/byChannel/"
 
-
 //segues
 let to_Login = "toLogin"
 let to_creat_acount = "toCreatAcount"

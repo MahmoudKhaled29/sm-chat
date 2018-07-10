@@ -58,7 +58,7 @@ class SocketService: NSObject {
             guard let channelId = dataArray[2] as? String else {return}
             
             //create new channel model
-            let newChannel = Channel(_id: channelId, name: channelName, description: channelDesc)
+            let newChannel = Channel(id: channelId, name: channelName, description: channelDesc)
             
             //add chanel to array of channel
             MessageService.instance.channels.append(newChannel)
@@ -69,7 +69,35 @@ class SocketService: NSObject {
     }
     
     
+    func addMessage(messageBody: String, userId: String, channelId: String, completion:@escaping completionHandler){
+        let user = UserDataService.instance
+        socket.emit("newMessage", messageBody , userId , channelId , user.name , user.avatarName , user.avatarColor)
+        completion(true)
+        
+    }
     
+    func getChatMessage(completion: @escaping completionHandler){
+        socket.on("messageCreated") { (dataArray, ack ) in
+            guard let messageBody = dataArray[0] as? String else {return}
+            // guard let userID = dataArray[1] as? String else {return}
+            guard let channelId = dataArray[2] as? String else {return}
+            guard let userName = dataArray[3] as? String else {return}
+            guard let userAvatar = dataArray[4] as? String else {return}
+            guard let userAvatarColor = dataArray[5] as? String else {return}
+            guard let id = dataArray[6] as? String else {return}
+            guard let timeStamp = dataArray[7] as? String else {return}
+            
+            if channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggin{
+                let newMessage = Message(message: messageBody, id: id, channelId: channelId, userName: userName, userAvatar: userAvatar, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
+                MessageService.instance.messages.append(newMessage)
+                completion(true)
+            }else{
+                completion(false)
+            }
+            
+            
+        }
+    }
     
     
 }

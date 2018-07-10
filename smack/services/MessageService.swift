@@ -38,7 +38,7 @@ class MessageService {
                             let name = item["name"].stringValue
                             let channelDescription = item["description"].stringValue
                             let id = item["_id"].stringValue
-                            let channel = Channel(_id: id, name: name, description: channelDescription)
+                            let channel = Channel(id: id, name: name, description: channelDescription)
                             self.channels.append(channel)
                         }
                     }
@@ -64,6 +64,7 @@ class MessageService {
         
         Alamofire.request("\(URL_GET_MESSAGES)\(channelId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BREAR_HEADER).responseJSON { (response) in
             if response.result.error == nil {
+                self.clearMessages()
                 guard let data = response.data else {return}
                 do{
                     if let json = try JSON(data: data).array{
@@ -76,7 +77,7 @@ class MessageService {
                             let userAvatarColor = item["userAvatarColor"].stringValue
                             let timeStamp = item["timeStamp"].stringValue
                             
-                            let newMessage = Message(message: messageBody, userId: id, channelId: channelId, userName: userName, userAvatar: userAvatar, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
+                            let newMessage = Message(message: messageBody, id: id, channelId: channelId, userName: userName, userAvatar: userAvatar, userAvatarColor: userAvatarColor, timeStamp: timeStamp)
                             self.messages.append(newMessage)
                         }
                     }
